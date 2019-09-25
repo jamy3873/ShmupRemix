@@ -20,7 +20,6 @@ public class BoundsCheck : MonoBehaviour
         camWidth = camHeight * Camera.main.aspect;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         Vector3 pos = transform.position;
