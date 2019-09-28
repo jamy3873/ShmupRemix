@@ -14,7 +14,7 @@ public class BoundsCheck : MonoBehaviour
     public float camWidth;
     public float camHeight;
 
-    void Awake()
+    void Start()
     {
         camHeight = Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
@@ -24,6 +24,7 @@ public class BoundsCheck : MonoBehaviour
     {
         Vector3 pos = transform.position;
         isOnScreen = true;
+        offRight = offLeft = offUp = offDown = false;
 
         if (pos.x > camWidth - radius)
         {

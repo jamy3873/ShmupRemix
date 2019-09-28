@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6573939566062631648}
   - component: {fileID: 6573939566062631649}
   - component: {fileID: 6573939566062631654}
+  - component: {fileID: 336222957533284470}
   m_Layer: 9
   m_Name: Wing
   m_TagString: Untagged
@@ -88,9 +89,22 @@ SphereCollider:
   m_GameObject: {fileID: 6573939566062631652}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &336222957533284470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573939566062631652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6573939567475547865
 GameObject:
@@ -194,6 +208,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6573939567685974318}
   - component: {fileID: 981299171512939339}
+  - component: {fileID: 8215971624372291970}
+  - component: {fileID: -5904111021652742663}
   m_Layer: 9
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -233,3 +249,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &8215971624372291970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573939567685974319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f794ec6624c84ff4c83b8ac9fcfbbc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  fireRate: 0.3
+  health: 10
+  score: 10
+  waveFrequency: 2
+  waveWidth: 4
+  waveRotY: 45
+--- !u!114 &-5904111021652742663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573939567685974319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea0e4e7b6a35594a8265d08eaabf5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  keepOnScreen: 0
+  isOnScreen: 1
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0
+  camWidth: 0
+  camHeight: 0
