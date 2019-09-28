@@ -1,3 +1,8 @@
-##PROCESS DOCUMENTATION##
+## PROCESS DOCUMENTATION ##
 
-**Initial Setup**
+**9/30/19 - Initial Setup**
+Following the prototype from Chapters 30 and 31 from Bond's Intro to Game Design, Prototyping, and Development, I got the base framework for a functional SHUMP in place. A hero ship can move around using WASD and shoot at various enemies with multiple weapon times. Picking up power ups gives the hero new weapons or shield upgrades, and can have up to 5 weapons of the same type. Right now the game is a vertical scroller more or less, but I want to make it more exploratory like Asteroids. This also means modifying enemy behaviors to account for the new playstyle.
+
+My initial brainstorming for this project was more geared towards creating an Area 51 themed side scroller in which aliens must escape the facility. While I liked that theme a lot, the idea focuses more on aesthetics rather than mechanics. I want to make a more engaging game than just "Shoot the enemies in front of you." To achieve this my game will focus on the puzzles and combat in a (partially) procedurally generated level. The overall objective will be geared towards destroying enemy bases and solving minor puzzles to actually reach those bases. The game will also have the added challenge of having to dodge/shoot large asteroids, which have a small potential to drop powerups and will be randomly generated around the level.
+
+Another big mechanic I want to implement is the cooperative element of having two hero ships tethered together, each with their own abilities and responsibilities. A "Hub" ship will control navigation using WASD and have "weapons" like a shield and some bombs. Meanwhile, another "Shooter" ship is capable of moving around and shooting the enemies using the mouse, but can't go beyond a certain distance from the hub it is attached to. To simplify combat, the ship will always shoot away from the hub and can move through the ship's shield (which only blocks enemy projectiles as well).
