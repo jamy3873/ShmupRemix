@@ -1,1 +1,3 @@
-##Initial Commit
+##PROCESS DOCUMENTATION##
+
+**Initial Setup**
