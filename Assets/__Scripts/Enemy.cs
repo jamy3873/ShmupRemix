@@ -53,9 +53,10 @@ public class Enemy : MonoBehaviour
             UnShowDamage();
         }
 
-        if (bndCheck != null && bndCheck.offDown)
+        if (bndCheck != null && !bndCheck.isOnScreen)
         {
             Destroy(gameObject);
+            Main.S.enemyCount--;
         }
     }
 

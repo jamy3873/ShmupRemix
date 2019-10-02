@@ -21,7 +21,7 @@ public class Enemy_3 : Enemy
 
         Vector3 v = Vector3.zero;
         v.x = Random.Range(xMin, xMax);
-        v.y = -bndCheck.camHeight * Random.Range(2.75f, 2);
+        v.y = -bndCheck.camHeight * Random.Range(2.75f, 2) /2;
         points[1] = v;
 
         v = Vector3.zero;

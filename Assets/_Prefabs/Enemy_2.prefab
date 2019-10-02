@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   keepOnScreen: 0
-  isOnScreen: 0
+  isOnScreen: 1
   offRight: 0
   offLeft: 0
   offUp: 0
@@ -89,6 +89,18 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 10
+  showDamageDuration: 0.1
+  powerUpDropChance: 1
+  originalColors: []
+  materials: []
+  showingDamage: 0
+  damageDoneTime: 0
+  notifiedOfDestruction: 0
+  sinEccentricity: 0.6
+  lifeTime: 10
+  p0: {x: 0, y: 0, z: 0}
+  p1: {x: 0, y: 0, z: 0}
+  birthTime: 0
 --- !u!1 &7651817476556345978
 GameObject:
   m_ObjectHideFlags: 0

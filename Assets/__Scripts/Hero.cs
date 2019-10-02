@@ -11,13 +11,11 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     public float gameRestartDelay = 2f;
-    public GameObject projectilePrefab;
-    public float projectileSpeed = 40;
     public Weapon[] weapons;
 
     [Header("Set Dynamically")]
     [SerializeField]
-    private float _shieldLevel = 1;
+    protected float _shieldLevel = 1;
 
     private GameObject lastTriggerGo = null;
 
@@ -26,21 +24,17 @@ public class Hero : MonoBehaviour
 
     void Start()
     {
-        if (S == null)
-        {
-            S = this;
-        }
-        else
-        {
-            Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
-        }
-
-        ClearWeapons();
-        weapons[0].SetType(WeaponType.blaster);
+        
     }
 
     void Update()
     {
+        
+    }
+
+    public virtual void Move()
+    {
+        //Move
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
 
@@ -49,21 +43,13 @@ public class Hero : MonoBehaviour
         pos.y += yAxis * speed * Time.deltaTime;
         transform.position = pos;
 
-        transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult,0);
-
-        if (Input.GetAxis("Jump") == 1 && fireDelegate != null) 
-        {
-            fireDelegate();
-        }
-
-        
+        transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-        //print("Triggered: " + go.name);
 
         if (go == lastTriggerGo) return;
         lastTriggerGo = go;
@@ -139,7 +125,7 @@ public class Hero : MonoBehaviour
         return null;
     }
 
-    void ClearWeapons()
+    protected void ClearWeapons()
     {
         foreach(Weapon w in weapons)
         {

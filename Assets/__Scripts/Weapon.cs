@@ -39,8 +39,11 @@ public class Weapon : MonoBehaviour
     public float lastShotTime;
     private Renderer collarRend;
 
+    private GameObject ship;
+
     void Start()
     {
+        ship = transform.root.gameObject;
         collar = transform.Find("Collar").gameObject;
         collarRend = collar.GetComponent<Renderer>();
         
@@ -55,9 +58,13 @@ public class Weapon : MonoBehaviour
         }
         //Find the fireDelegate of the root GameObject (Which is the hero)
         GameObject rootGO = transform.root.gameObject;
-        if(rootGO.GetComponent<Hero>() != null)
+        if(rootGO.GetComponent<HeroShip>() != null)
         {
-            rootGO.GetComponent<Hero>().fireDelegate += Fire;
+            rootGO.GetComponent<HeroShip>().fireDelegate += Fire;
+        }
+        else if (rootGO.GetComponent<HubShip>() != null)
+        {
+            rootGO.GetComponent<HubShip>().fireDelegate += Fire;
         }
     }
 
@@ -91,7 +98,7 @@ public class Weapon : MonoBehaviour
         if (Time.time - lastShotTime < def.shotDelay) return;
 
         Projectile p; //Create and send a projectile "upwards" and if firing downward, reverse y velocity
-        Vector3 vel = Vector3.up * def.velocity;
+        Vector3 vel = ship.transform.up * def.velocity;
         if (transform.up.y < 0) vel.y = -vel.y;
 
         switch (type)
@@ -99,16 +106,20 @@ public class Weapon : MonoBehaviour
             case WeaponType.blaster:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
+                p.transform.rotation = ship.transform.rotation;
                 break;
             case WeaponType.spread:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
                 p = MakeProjectile();
-                p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
+                p.transform.rotation = ship.transform.rotation;
+                p.transform.rotation = Quaternion.AngleAxis(p.transform.rotation.z + 10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
                 p = MakeProjectile();
-                p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
+                p.transform.rotation = ship.transform.rotation;
+                p.transform.rotation = Quaternion.AngleAxis(p.transform.rotation.z - 10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
+                p.transform.rotation = ship.transform.rotation;
                 break;
         }
     }
