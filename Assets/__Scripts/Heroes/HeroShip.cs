@@ -12,7 +12,11 @@ public class HeroShip : Hero
     {
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
-        transform.position = Hub.transform.position + transform.right * distFromHub;
+        if (Hub)
+        {
+            transform.position = Hub.transform.position + transform.right * distFromHub;
+        }
+        
     }
 
     // Update is called once per frame

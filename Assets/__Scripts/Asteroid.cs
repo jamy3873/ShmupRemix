@@ -71,9 +71,6 @@ public class Asteroid : Enemy
                 }
                 Destroy(otherGO);
                 break;
-            default:
-                print("Enemy hit by non-ProjectileHero: " + otherGO.name);
-                break;
         }
     }
 }
