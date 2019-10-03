@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    static public Hero S;
-
     [Header("Set in Inspector")]
     public float speed = 30;
     public float rollMult = -45;
@@ -17,7 +15,7 @@ public class Hero : MonoBehaviour
     [SerializeField]
     protected float _shieldLevel = 1;
 
-    private GameObject lastTriggerGo = null;
+    protected GameObject lastTriggerGo = null;
 
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
@@ -50,14 +48,13 @@ public class Hero : MonoBehaviour
     {
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-
         if (go == lastTriggerGo) return;
         lastTriggerGo = go;
 
-        if (go.tag == "Enemy")
+        if (go.tag == "Enemy" || go.tag == "Asteroid")
         {
             shieldLevel--;
-            Destroy(go);
+            if (go.tag == "Enemy") Destroy(go);
         }
         else if (go.tag == "PowerUp")
         {
@@ -78,7 +75,7 @@ public class Hero : MonoBehaviour
                 shieldLevel++;
                 break;
             default:
-                if(pu.type == weapons[0].type)
+                if (pu.type == weapons[0].type)
                 {
                     Weapon w = GetEmptyWeaponSlot();
                     if (w != null){

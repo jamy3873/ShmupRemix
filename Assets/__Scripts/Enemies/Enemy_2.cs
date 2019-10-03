@@ -32,6 +32,20 @@ public class Enemy_2 : Enemy
         birthTime = Time.time;
     }
 
+    private void Update()
+    {
+        Move();
+        if (showingDamage && Time.time > damageDoneTime)
+        {
+            UnShowDamage();
+        }
+        if (bndCheck != null && !bndCheck.isOnScreen)
+        {
+            Destroy(gameObject);
+            Main.S.enemyCount--;
+        }
+    }
+
     public override void Move()
     {
         float u = (Time.time - birthTime) / lifeTime;

@@ -99,7 +99,6 @@ public class Weapon : MonoBehaviour
 
         Projectile p; //Create and send a projectile "upwards" and if firing downward, reverse y velocity
         Vector3 vel = ship.transform.up * def.velocity;
-        if (transform.up.y < 0) vel.y = -vel.y;
 
         switch (type)
         {

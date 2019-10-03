@@ -12,8 +12,7 @@ public class HeroShip : Hero
     {
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
-        transform.position = transform.right * distFromHub;
-        transform.rotation = Quaternion.Euler(0, 0, -90);
+        transform.position = Hub.transform.position + transform.right * distFromHub;
     }
 
     // Update is called once per frame
@@ -37,13 +36,24 @@ public class HeroShip : Hero
             Vector3 targetDir = mousePos - Hub.transform.position;
             transform.position = Hub.transform.position + (targetDir.normalized * distFromHub);
 
-            transform.LookAt(Hub.transform.position + targetDir.normalized,-Vector3.right);
+            Quaternion rot = transform.rotation;
+            if(targetDir.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0,0,-Vector3.Angle(targetDir.normalized * distFromHub,Hub.transform.up));
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(targetDir.normalized * distFromHub, Hub.transform.up));
+            }
+
         }
         else
         {
             base.Move();
         }
+
+
     }
 
-
+    
 }

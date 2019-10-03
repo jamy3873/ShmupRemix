@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  keepOnScreen: 0
+  keepOnScreen: 1
   isOnScreen: 1
   offRight: 0
   offLeft: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   offDown: 0
   camWidth: 0
   camHeight: 0
+  playArea: {x: 0, y: 0}
 --- !u!114 &6681729547050807014
 MonoBehaviour:
   m_ObjectHideFlags: 0

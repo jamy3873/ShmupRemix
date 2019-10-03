@@ -46,8 +46,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        Move();
-
         if(showingDamage && Time.time > damageDoneTime)
         {
             UnShowDamage();
@@ -67,7 +65,7 @@ public class Enemy : MonoBehaviour
         pos = tempPos;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         GameObject otherGO = collision.gameObject;
         switch (otherGO.tag)
@@ -99,7 +97,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void ShowDamage()
+    protected void ShowDamage()
     {
         foreach(Material m in materials)
         {
@@ -109,7 +107,7 @@ public class Enemy : MonoBehaviour
         damageDoneTime = Time.time + showDamageDuration;
     }
 
-    void UnShowDamage()
+    protected void UnShowDamage()
     {
         for(int i = 0; i < materials.Length; i++)
         {

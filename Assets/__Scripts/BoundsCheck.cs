@@ -19,7 +19,6 @@ public class BoundsCheck : MonoBehaviour
     {
         camHeight = Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
-
         playArea = new Vector2(100, 100);
     }
 
@@ -64,5 +63,15 @@ public class BoundsCheck : MonoBehaviour
         if (!Application.isPlaying) return;
         Vector3 boundSize = new Vector3(playArea.x * 2, playArea.y * 2, 0.1f);
         Gizmos.DrawWireCube(Vector3.zero, boundSize);
+    }
+
+    public bool onCamera(Vector3 pos)
+    {
+        pos = Camera.main.transform.position - pos;
+        if (pos.x < camWidth && pos.x > -camWidth && pos.y < camHeight && pos.y > -camHeight)
+        {
+            return true;
+        }
+        return false;
     }
 }
