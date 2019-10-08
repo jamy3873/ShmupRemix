@@ -13,6 +13,7 @@ public class Hero : MonoBehaviour
 
     [Header("Set Dynamically")]
     [SerializeField]
+    protected Rigidbody rb;
     protected float _shieldLevel = 1;
 
     protected GameObject lastTriggerGo = null;
@@ -32,6 +33,7 @@ public class Hero : MonoBehaviour
 
     public virtual void Move()
     {
+        rb.velocity = Vector3.zero;
         //Move
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");

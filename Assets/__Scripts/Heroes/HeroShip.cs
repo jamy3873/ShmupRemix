@@ -11,7 +11,7 @@ public class HeroShip : Hero
     void Start()
     {
         ClearWeapons();
-        weapons[0].SetType(WeaponType.blaster);
+        weapons[0].SetType(WeaponType.spread);
         if (Hub)
         {
             transform.position = Hub.transform.position + transform.right * distFromHub;
@@ -37,17 +37,18 @@ public class HeroShip : Hero
             Vector3 mousePos = Input.mousePosition;
             Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
             mousePos -= mouseOffset/2;
-            Vector3 targetDir = mousePos - Hub.transform.position;
+
+            Vector3 targetDir = mousePos - Hub.transform.up;
             transform.position = Hub.transform.position + (targetDir.normalized * distFromHub);
 
             Quaternion rot = transform.rotation;
             if(targetDir.x > 0)
             {
-                transform.rotation = Quaternion.Euler(0,0,-Vector3.Angle(targetDir.normalized * distFromHub,Hub.transform.up));
+                transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(targetDir.normalized, Hub.transform.up));
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(targetDir.normalized * distFromHub, Hub.transform.up));
+                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(targetDir.normalized, Hub.transform.up));
             }
 
         }

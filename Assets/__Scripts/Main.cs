@@ -19,9 +19,7 @@ public class Main : MonoBehaviour
     public int          maxAsteroids = 10;
     public WeaponDefinition[] weaponDefinitions;
     public GameObject prefabPowerUp;
-    public WeaponType[] powerUpFrequencey = new WeaponType[] {
-                            WeaponType.blaster, WeaponType.spread,
-                            WeaponType.blaster, WeaponType.shield};
+    public WeaponType[] powerUpFrequencey;
 
     private BoundsCheck bndCheck;
     public int enemyCount = 0;
@@ -33,7 +31,7 @@ public class Main : MonoBehaviour
         {
             int ndx = Random.Range(0, powerUpFrequencey.Length);
             WeaponType puType = powerUpFrequencey[ndx];
-
+            
             GameObject go = Instantiate(prefabPowerUp) as GameObject;
             PowerUp pu = go.GetComponent<PowerUp>();
             pu.SetType(puType);
@@ -70,7 +68,7 @@ public class Main : MonoBehaviour
             {
                 int ndx = Random.Range(0, powerUpFrequencey.Length);
                 WeaponType puType = powerUpFrequencey[ndx];
-
+                
                 GameObject go = Instantiate(prefabPowerUp) as GameObject;
                 PowerUp pu = go.GetComponent<PowerUp>();
                 pu.SetType(puType);
@@ -93,7 +91,7 @@ public class Main : MonoBehaviour
         }
 
         //Spawn Asteroids
-        SpawnAsteroids();
+        //SpawnAsteroids();
     }
 
     public void Update()

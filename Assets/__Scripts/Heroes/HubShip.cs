@@ -6,7 +6,8 @@ public class HubShip : Hero
 {
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        //ClearWeapons();
     }
 
     // Update is called once per frame
@@ -20,7 +21,4 @@ public class HubShip : Hero
         }
     }
 
-    
-
-    
 }

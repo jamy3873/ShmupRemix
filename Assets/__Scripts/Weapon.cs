@@ -98,27 +98,32 @@ public class Weapon : MonoBehaviour
         if (Time.time - lastShotTime < def.shotDelay) return;
 
         Projectile p; //Create and send a projectile "upwards" and if firing downward, reverse y velocity
-        Vector3 vel = ship.transform.up * def.velocity;
+        Vector3 vel = collar.transform.up * def.velocity;
 
         switch (type)
         {
             case WeaponType.blaster:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
-                p.transform.rotation = ship.transform.rotation;
+                //p.transform.rotation = collar.transform.rotation;
                 break;
             case WeaponType.spread:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
+                Debug.Log("1" + p.transform.rotation);
                 p = MakeProjectile();
-                p.transform.rotation = ship.transform.rotation;
-                p.transform.rotation = Quaternion.AngleAxis(p.transform.rotation.z + 10, Vector3.back);
+                p.transform.rotation = Quaternion.Euler(0, 0, collar.transform.rotation.z + 10);
                 p.rigid.velocity = p.transform.rotation * vel;
+                Debug.Log("2" + p.transform.rotation);
                 p = MakeProjectile();
-                p.transform.rotation = ship.transform.rotation;
-                p.transform.rotation = Quaternion.AngleAxis(p.transform.rotation.z - 10, Vector3.back);
+                p.transform.rotation = Quaternion.Euler(0, 0, collar.transform.rotation.z - 10);
                 p.rigid.velocity = p.transform.rotation * vel;
-                p.transform.rotation = ship.transform.rotation;
+                Debug.Log("3" + p.transform.rotation);
+                break;
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.rigid.velocity = vel;
+                p.transform.rotation = collar.transform.rotation;
                 break;
         }
     }
@@ -136,6 +141,7 @@ public class Weapon : MonoBehaviour
             go.layer = LayerMask.NameToLayer("ProjectileEnemy");
         }
         go.transform.position = collar.transform.position;
+        go.transform.rotation = collar.transform.rotation;
         go.transform.SetParent(PROJECTILE_ANCHOR, true);
         Projectile p = go.GetComponent<Projectile>();
         p.type = type;

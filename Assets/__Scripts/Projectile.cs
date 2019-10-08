@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (bndCheck.offUp)
+        if (!bndCheck.isOnScreen)
         {
             Destroy(gameObject);
         }
