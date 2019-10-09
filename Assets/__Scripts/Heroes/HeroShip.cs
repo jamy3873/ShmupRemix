@@ -11,7 +11,7 @@ public class HeroShip : Hero
     void Start()
     {
         ClearWeapons();
-        weapons[0].SetType(WeaponType.spread);
+        weapons[0].SetType(WeaponType.blaster);
         if (Hub)
         {
             transform.position = Hub.transform.position + transform.right * distFromHub;

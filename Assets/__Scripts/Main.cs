@@ -36,12 +36,13 @@ public class Main : MonoBehaviour
             PowerUp pu = go.GetComponent<PowerUp>();
             pu.SetType(puType);
             pu.transform.position = e.transform.position;
+            enemyCount--;
         }
     }
 
     public void AsteroidDestroyed(Asteroid a)
     {
-        asteroidCount--;
+        asteroidCount++;
         if (a.transform.localScale.x > 4)
         {
             Vector3 size = new Vector3(4, 4, 4);
@@ -74,6 +75,7 @@ public class Main : MonoBehaviour
                 pu.SetType(puType);
                 pu.transform.position = a.transform.position;
             }
+            asteroidCount--;
             SpawnAsteroids();
         }
     }
@@ -91,7 +93,7 @@ public class Main : MonoBehaviour
         }
 
         //Spawn Asteroids
-        //SpawnAsteroids();
+        SpawnAsteroids();
     }
 
     public void Update()

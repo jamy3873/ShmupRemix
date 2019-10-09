@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    static public Transform ENEMY_ANCHOR;
+
     [Header("Set in Inspector")]
     public float    speed = 10f;
     public float    fireRate = 0.3f;
@@ -30,6 +32,14 @@ public class Enemy : MonoBehaviour
         {
             originalColors[i] = materials[i].color;
         }
+
+        if (ENEMY_ANCHOR == null)
+        {
+            GameObject go = new GameObject("_EnemyAnchor");
+            go.tag = "Enemy";
+            ENEMY_ANCHOR = go.transform;
+        }
+        //transform.SetParent(ENEMY_ANCHOR, true);
     }
 
     public Vector3 pos

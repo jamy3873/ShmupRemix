@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 0.3
+  fireRate: 0
   health: 3
   score: 100
   showDamageDuration: 0.1

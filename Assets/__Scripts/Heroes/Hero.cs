@@ -33,7 +33,6 @@ public class Hero : MonoBehaviour
 
     public virtual void Move()
     {
-        rb.velocity = Vector3.zero;
         //Move
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
@@ -64,7 +63,7 @@ public class Hero : MonoBehaviour
         }
         else
         {
-            print("Triggered by non-Enemy: " + go.name);
+            print("Hero triggered by non-Enemy: " + go.name);
         }
     }
 

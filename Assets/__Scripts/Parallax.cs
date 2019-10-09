@@ -45,16 +45,9 @@ public class Parallax : MonoBehaviour
         }
 
         //Position panels[0]
-        panels[0].transform.position = new Vector3(tX, tY, depth);
+        panels[0].transform.position = new Vector3(tX, 0, depth);
         //Position panels[1] to make a continuous starfield
-        if (tY >= 0)
-        {
-            panels[1].transform.position = new Vector3(tX, tY - panelHt, depth);
-        }
-        else
-        {
-            panels[1].transform.position = new Vector3(tX, tY + panelHt, depth);
-        }
+        panels[1].transform.position = new Vector3(tX, 0, depth);
 
     }
 }

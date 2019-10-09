@@ -11,6 +11,7 @@ TagManager:
   - PowerUp
   - PowerUpBox
   - Asteroid
+  - Walls
   layers:
   - Default
   - TransparentFX

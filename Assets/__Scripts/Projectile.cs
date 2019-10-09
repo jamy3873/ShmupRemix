@@ -45,4 +45,13 @@ public class Projectile : MonoBehaviour
         WeaponDefinition def = Main.GetWeaponDefinition(_type);
         rend.material.color = def.projectileColor;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject go = collision.gameObject;
+        if (go.tag == "Walls")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

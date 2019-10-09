@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Asteroid : Enemy
 {
+    static public Transform ASTEROID_ANCHOR;
+
     private Rigidbody rigid;
     private float maxSpeed = 20;
     public Vector3 rotPerSecond;
     public Vector2 rotMinMax = new Vector2(15, 90);
     void Start()
     {
+        if (ASTEROID_ANCHOR == null)
+        {
+            GameObject go = new GameObject("_AsteroidAnchor");
+            go.tag = "Asteroid";
+            ASTEROID_ANCHOR = go.transform;
+        }
+        //transform.SetParent(ASTEROID_ANCHOR, true);
+
         //Random position, velocity, and rotation
         rigid = GetComponent<Rigidbody>();
         Vector3 vel = Random.onUnitSphere;

@@ -105,25 +105,23 @@ public class Weapon : MonoBehaviour
             case WeaponType.blaster:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
-                //p.transform.rotation = collar.transform.rotation;
+                p.transform.rotation = collar.transform.rotation;
                 break;
             case WeaponType.spread:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
-                Debug.Log("1" + p.transform.rotation);
                 p = MakeProjectile();
                 p.transform.rotation = Quaternion.Euler(0, 0, collar.transform.rotation.z + 10);
                 p.rigid.velocity = p.transform.rotation * vel;
-                Debug.Log("2" + p.transform.rotation);
+                p.transform.rotation = collar.transform.rotation;
                 p = MakeProjectile();
                 p.transform.rotation = Quaternion.Euler(0, 0, collar.transform.rotation.z - 10);
                 p.rigid.velocity = p.transform.rotation * vel;
-                Debug.Log("3" + p.transform.rotation);
+                p.transform.rotation = collar.transform.rotation;
                 break;
             case WeaponType.missile:
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
-                p.transform.rotation = collar.transform.rotation;
                 break;
         }
     }

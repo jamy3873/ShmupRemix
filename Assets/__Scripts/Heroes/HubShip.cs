@@ -21,4 +21,10 @@ public class HubShip : Hero
         }
     }
 
+    private void LateUpdate()
+    {
+
+        rb.velocity = Vector3.zero;
+    }
+
 }
