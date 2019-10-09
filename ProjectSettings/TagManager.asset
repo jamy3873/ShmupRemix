@@ -12,6 +12,7 @@ TagManager:
   - PowerUpBox
   - Asteroid
   - Walls
+  - BlueDoor
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - ProjectileEnemy
   - PowerUp
   - Asteroids
-  - 
+  - Doors
   - 
   - 
   - 

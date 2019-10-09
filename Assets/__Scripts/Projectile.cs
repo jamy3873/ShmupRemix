@@ -53,5 +53,20 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (go.layer == 14) //Door layer
+        {
+            OpenDoor(go);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OpenDoor(GameObject door)
+    {
+        Door d = door.GetComponent<Door>();
+        WeaponType wt = d.weapon;
+        if (_type == wt)
+        {
+            Destroy(door);
+        }
     }
 }
