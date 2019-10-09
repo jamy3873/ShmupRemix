@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Main : MonoBehaviour
 {
     static public Main S;
-    static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
+    static public Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in Inspector")]
     public GameObject Hub;
