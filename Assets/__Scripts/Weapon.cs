@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour
             PROJECTILE_ANCHOR = go.transform;
         }
         //Find the fireDelegate of the root GameObject (Which is the hero)
-        GameObject rootGO = transform.root.gameObject;
+        GameObject rootGO = transform.parent.gameObject;
         if(rootGO.GetComponent<HeroShip>() != null)
         {
             rootGO.GetComponent<HeroShip>().fireDelegate += Fire;

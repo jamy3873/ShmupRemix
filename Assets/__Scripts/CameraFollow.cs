@@ -2,10 +2,19 @@
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    static public CameraFollow S;
 
+    public Transform target;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
+
+    private void Start()
+    {
+        if (S == null)
+        {
+            S = this;
+        }
+    }
 
     private void LateUpdate()
     {
@@ -13,6 +22,6 @@ public class CameraFollow : MonoBehaviour
         {
             transform.position = target.position + offset;
         }
-        
     }
+
 }

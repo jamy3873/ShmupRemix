@@ -9,6 +9,7 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     public float gameRestartDelay = 2f;
+    public float invincibilityTimer = 5f;
     public Weapon[] weapons;
 
     [Header("Set Dynamically")]
@@ -17,6 +18,7 @@ public class Hero : MonoBehaviour
     protected float _shieldLevel = 1;
 
     protected GameObject lastTriggerGo = null;
+    protected GameObject lastCollGo = null;
 
     public delegate void WeaponFireDelegate();
     public WeaponFireDelegate fireDelegate;
@@ -52,10 +54,13 @@ public class Hero : MonoBehaviour
         if (go == lastTriggerGo) return;
         lastTriggerGo = go;
 
-        if (go.tag == "Enemy" || go.tag == "Asteroid")
+        if (go.tag == "Enemy" || other.tag == "Asteroid" || other.tag == "ProjectileEnemy")
         {
             shieldLevel--;
-            if (go.tag == "Enemy") Destroy(go);
+            if (other.tag == "ProjectileEnemy")
+            {
+                Destroy(go);
+            }
         }
         else if (go.tag == "PowerUp")
         {
@@ -66,6 +71,7 @@ public class Hero : MonoBehaviour
             print("Hero triggered by non-Enemy: " + go.name);
         }
     }
+
 
     public void AbsorbPowerUp(GameObject go)
     {
@@ -104,9 +110,12 @@ public class Hero : MonoBehaviour
             _shieldLevel = Mathf.Min(value, 4);
             if (value < 0)
             {
-                Destroy(this.gameObject);
-                //Restart Game
-                Main.S.DelayedRestart(gameRestartDelay);
+                if (gameObject == Main.S.Hub && Main.S.Hero != null)
+                {
+                    CameraFollow cf = Camera.main.GetComponent<CameraFollow>();
+                    cf.target = Main.S.Hero.transform;
+                }
+                Destroy(gameObject);
             }
         }
     }

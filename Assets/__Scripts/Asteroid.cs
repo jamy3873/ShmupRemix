@@ -18,13 +18,13 @@ public class Asteroid : Enemy
             go.tag = "Asteroid";
             ASTEROID_ANCHOR = go.transform;
         }
-        //transform.SetParent(ASTEROID_ANCHOR, true);
+        transform.SetParent(ASTEROID_ANCHOR, true);
 
         //Random position, velocity, and rotation
         rigid = GetComponent<Rigidbody>();
         Vector3 vel = Random.onUnitSphere;
         vel.z = 0;
-        rigid.velocity = vel.normalized * Random.Range(1, maxSpeed);
+        rigid.velocity = vel.normalized * Random.Range(3, maxSpeed);
         Main.S.asteroidCount++;
 
         //Set random rotation

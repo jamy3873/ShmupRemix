@@ -27,8 +27,9 @@ public class Enemy_1 : Enemy
         }
         if (bndCheck != null && !bndCheck.isOnScreen)
         {
-            Destroy(gameObject);
             Main.S.enemyCount--;
+            Destroy(gameObject);
+
         }
     }
 

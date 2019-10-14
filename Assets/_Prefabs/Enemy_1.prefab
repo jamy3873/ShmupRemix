@@ -296,3 +296,4 @@ MonoBehaviour:
   offDown: 0
   camWidth: 0
   camHeight: 0
+  playArea: {x: 0, y: 0}

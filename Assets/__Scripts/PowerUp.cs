@@ -45,7 +45,7 @@ public class PowerUp : MonoBehaviour
         birthTime = Time.time;
         if(type != WeaponType.none)
         {
-            //SetType(type);
+            SetType(type);
         }
     }
 

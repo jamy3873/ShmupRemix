@@ -12,6 +12,7 @@ public class HeroShip : Hero
     {
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
+        rb = GetComponent<Rigidbody>();
         if (Hub)
         {
             transform.position = Hub.transform.position + transform.right * distFromHub;
@@ -38,23 +39,42 @@ public class HeroShip : Hero
             Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
             mousePos -= mouseOffset/2;
 
-            Vector3 targetDir = mousePos - Hub.transform.up;
-            transform.position = Hub.transform.position + (targetDir.normalized * distFromHub);
+            transform.position = Hub.transform.position + (mousePos.normalized * distFromHub);
 
-            Quaternion rot = transform.rotation;
-            if(targetDir.x > 0)
+            if(mousePos.x > 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(targetDir.normalized, Hub.transform.up));
+                transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(mousePos.normalized, Hub.transform.up));
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(targetDir.normalized, Hub.transform.up));
+                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(mousePos.normalized, Hub.transform.up));
             }
 
         }
         else
         {
-            base.Move();
+            rb.velocity = Vector3.zero;
+            float xAxis = Input.GetAxis("Horizontal");
+            float yAxis = Input.GetAxis("Vertical");
+
+            Vector3 pos = transform.position;
+            pos.x += xAxis * speed * Time.deltaTime;
+            pos.y += yAxis * speed * Time.deltaTime;
+            transform.position = pos;
+
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
+            mousePos -= mouseOffset / 2;
+
+            Quaternion rot = transform.rotation;
+            if (mousePos.x > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(mousePos.normalized, Vector3.up));
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, Vector3.Angle(mousePos.normalized, Vector3.up));
+            }
         }
 
 

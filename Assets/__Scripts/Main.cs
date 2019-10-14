@@ -42,7 +42,7 @@ public class Main : MonoBehaviour
 
     public void AsteroidDestroyed(Asteroid a)
     {
-        asteroidCount++;
+        asteroidCount--;
         if (a.transform.localScale.x > 4)
         {
             Vector3 size = new Vector3(4, 4, 4);
@@ -75,8 +75,8 @@ public class Main : MonoBehaviour
                 pu.SetType(puType);
                 pu.transform.position = a.transform.position;
             }
-            asteroidCount--;
             SpawnAsteroids();
+            
         }
     }
 
@@ -84,7 +84,7 @@ public class Main : MonoBehaviour
     {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
-        Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+        
 
         WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
         foreach(WeaponDefinition def in weaponDefinitions)
@@ -94,50 +94,31 @@ public class Main : MonoBehaviour
 
         //Spawn Asteroids
         SpawnAsteroids();
+        //Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
 
     public void Update()
     {
-
+        if(Hub == null && Hero == null)
+        {
+            DelayedRestart(2);
+        }
     }
 
     public void SpawnAsteroids()
     {
-        for(int i = asteroidCount; i < maxAsteroids; i++)
+        SpawnController Spawner = GetComponent<SpawnController>();
+        if (Spawner.spawnAllowed && asteroidCount >= maxAsteroids)
         {
-            GameObject go = Instantiate<GameObject>(prefabAsteroid);
-
-            float enemyPadding = enemyDefaultPadding;
-            if (go.GetComponent<BoundsCheck>() != null)
-            {
-                enemyPadding = Mathf.Abs(go.GetComponent<BoundsCheck>().radius);
-            }
-
-            Vector3 pos = Vector3.zero;
-            float xMin = -bndCheck.playArea.x + enemyPadding;
-            float xMax = bndCheck.playArea.x - enemyPadding;
-            float yMin = -bndCheck.playArea.y + enemyPadding;
-            float yMax = bndCheck.playArea.y - enemyPadding;
-            pos.x = Random.Range(xMin, xMax);
-            pos.y = Random.Range(yMin, yMax);
-            //Ensures wont spawn on player
-
-            float distFromShip = 60;
-            GameObject ship = Hub;
-            if(ship != null)
-            {
-                ship = Hero;
-            }
-            while(distFromShip < 60)
-            {
-                pos.x = Random.Range(xMin, xMax);
-                pos.y = Random.Range(yMin, yMax);
-                distFromShip = Vector3.Distance(ship.transform.position, pos);
-            }
-
-            go.transform.position = pos;
-            asteroidCount++;
+            Spawner.spawnAllowed = false;
         }
+        else if (asteroidCount < maxAsteroids)
+        {
+            Spawner.spawnAllowed = true;
+        }
+        Spawner.SpawnSomething();
+       
+        
     }
 
     public void SpawnEnemy()
@@ -164,6 +145,7 @@ public class Main : MonoBehaviour
         {
             pos.x = Random.Range(xMin, xMax);
             pos.y = Random.Range(yMin, yMax);
+            
         }
             
         go.transform.position = pos;

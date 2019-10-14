@@ -10,29 +10,20 @@ public class Shield : MonoBehaviour
     [Header("set Dynamically")]
     public int levelShown = 0;
     private int _currLevel = 0;
-    private GameObject parent;
+    private Hero parent;
     private Hero parentHero;
 
     Material mat;
     void Start()
     {
         mat = GetComponent<Renderer>().material;
-        parent = transform.root.gameObject;
-        switch (parent.name)
-        {
-            case "_Hub":
-                parentHero = parent.GetComponent<HubShip>();
-                break;
-            case "_Hero":
-                parentHero = parent.GetComponent<HeroShip>();
-                break;
-        }
+        parent = GetComponentInParent<Hero>();
         
     }
 
     void Update()
     {
-        _currLevel = Mathf.FloorToInt(parentHero.shieldLevel);
+        _currLevel = Mathf.FloorToInt(parent.shieldLevel);
         if (levelShown != _currLevel)
         {
             levelShown = _currLevel;

@@ -19,7 +19,7 @@ public class BoundsCheck : MonoBehaviour
     {
         camHeight = Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
-        playArea = new Vector2(100, 100);
+        playArea = new Vector2(350, 350);
     }
 
     void LateUpdate()

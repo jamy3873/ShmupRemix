@@ -49,11 +49,11 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         GameObject go = collision.gameObject;
-        if (go.tag == "Walls")
+        if (go.tag == "Walls" || go.tag == "Asteroid")
         {
             Destroy(gameObject);
         }
-        if (go.layer == 14) //Door layer
+        if (go.layer == 14 && tag != "ProjectileEnemy") //Door layer
         {
             OpenDoor(go);
             Destroy(gameObject);

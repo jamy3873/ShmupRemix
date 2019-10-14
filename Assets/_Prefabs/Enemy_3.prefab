@@ -99,6 +99,7 @@ MonoBehaviour:
   offDown: 0
   camWidth: 0
   camHeight: 0
+  playArea: {x: 0, y: 0}
 --- !u!1 &3474884769883676102
 GameObject:
   m_ObjectHideFlags: 0
