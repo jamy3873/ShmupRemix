@@ -36,18 +36,20 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float tY, tX = 0;
-        tY = Time.time * scrollSpeed % panelHt + (panelHt * 0.5f);
+        float tY = 0, tX = 0;
+        //tY = Time.time * scrollSpeed % panelHt + (panelHt * 0.5f);
 
         if (poi != null)
         {
             tX = -poi.transform.position.x * motionMult;
+            tY = -poi.transform.position.y * motionMult;
+            transform.position = new Vector3(poi.transform.position.x, poi.transform.position.y, 21);
         }
 
         //Position panels[0]
-        panels[0].transform.position = new Vector3(tX, 0, depth);
+        panels[0].transform.position = new Vector3(tX, tY, depth);
         //Position panels[1] to make a continuous starfield
-        panels[1].transform.position = new Vector3(tX, 0, depth);
+        panels[1].transform.position = new Vector3(-tX, -tY, depth);
 
     }
 }
