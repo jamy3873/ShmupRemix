@@ -49,9 +49,10 @@ MonoBehaviour:
   speed: 10
   fireRate: 0
   health: 3
-  score: 100
+  score: 5
   showDamageDuration: 0.1
-  powerUpDropChance: 1
+  powerUpDropChance: 0.7
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
   originalColors: []
   materials: []
   showingDamage: 0

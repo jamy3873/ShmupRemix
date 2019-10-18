@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         mat = GetComponent<Renderer>().material;
-        //mat.color = color;
+        mat.color = color;
     }
 
     // Update is called once per frame

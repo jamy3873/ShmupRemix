@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     public Rigidbody rigid;
     [SerializeField] //Forces following declaration to be settable in the inspector, even though it's private
     private WeaponType _type; //Undersore used for private variables, accessed by properties w/out the underscore
+    private float birthTime;
+    private float x0;
 
     public WeaponType type
     {
@@ -26,6 +28,8 @@ public class Projectile : MonoBehaviour
 
     void Awake()
     {
+        birthTime = Time.time;
+        x0 = transform.localPosition.x;
         bndCheck = GetComponent<BoundsCheck>();
         rend = GetComponent<Renderer>();
         rigid = GetComponent<Rigidbody>();
@@ -33,9 +37,14 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (!bndCheck.isOnScreen)
+        if (!bndCheck.onCamera(transform.position))
         {
             Destroy(gameObject);
+        }
+        if(type == WeaponType.phaser)
+        {
+
+            
         }
     }
 
@@ -46,7 +55,7 @@ public class Projectile : MonoBehaviour
         rend.material.color = def.projectileColor;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         GameObject go = collision.gameObject;
         if (go.tag == "Walls" || go.tag == "Asteroid")

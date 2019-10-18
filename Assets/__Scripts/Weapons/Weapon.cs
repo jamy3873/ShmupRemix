@@ -10,7 +10,8 @@ public enum WeaponType
     phaser,
     missile,
     laser,
-    shield
+    shield,
+    newLife
 }
 
 [System.Serializable] //Makes the following class serializable and editable in Unity inspector (for simple classes)
@@ -123,13 +124,23 @@ public class Weapon : MonoBehaviour
                 p = MakeProjectile();
                 p.rigid.velocity = vel;
                 break;
+            case WeaponType.phaser:
+                p = MakeProjectile();
+                p.transform.position += (2 * transform.right);
+                p.rigid.velocity = vel;
+                p = MakeProjectile();
+                p.transform.position += (2 * -transform.right);
+                p.rigid.velocity = vel;
+                break;
         }
     }
 
     public Projectile MakeProjectile()
     {
         GameObject go = Instantiate<GameObject>(def.projectilePrefab);
-        if(transform.parent.gameObject.tag == "Hero")
+        Projectile p = go.GetComponent<Projectile>();
+        p.type = type;
+        if (transform.parent.gameObject.tag == "Hero")
         {
             go.tag = "ProjectileHero";
             go.layer = LayerMask.NameToLayer("ProjectileHero");
@@ -137,13 +148,14 @@ public class Weapon : MonoBehaviour
         {
             go.tag = "ProjectileEnemy";
             go.layer = LayerMask.NameToLayer("ProjectileEnemy");
+            go.GetComponent<Renderer>().material.color = Color.red;
         }
         go.transform.position = collar.transform.position;
         go.transform.rotation = collar.transform.rotation;
         go.transform.SetParent(PROJECTILE_ANCHOR, true);
-        Projectile p = go.GetComponent<Projectile>();
-        p.type = type;
+        
         lastShotTime = Time.time;
         return p;
     }
+
 }

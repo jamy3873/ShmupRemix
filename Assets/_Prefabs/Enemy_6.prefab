@@ -253,9 +253,10 @@ MonoBehaviour:
   speed: 10
   fireRate: 0.3
   health: 10
-  score: 100
+  score: 20
   showDamageDuration: 0.1
-  powerUpDropChance: 1
+  powerUpDropChance: 0.5
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
   originalColors: []
   materials: []
   showingDamage: 0
@@ -542,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
         type: 3}
       propertyPath: _type
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}

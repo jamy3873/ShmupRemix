@@ -19,17 +19,28 @@ public class Main : MonoBehaviour
     public int          maxAsteroids = 10;
     public WeaponDefinition[] weaponDefinitions;
     public GameObject prefabPowerUp;
-    public WeaponType[] powerUpFrequencey;
+    public List<WeaponType> powerUpFrequencey;
 
     private BoundsCheck bndCheck;
+    private SpawnController Spawner;
     public int enemyCount = 0;
     public int asteroidCount = 20;
 
     public void ShipDestroyed(Enemy e)
     {
-        if (Random.value <= e.powerUpDropChance)
+        Base b = e.GetComponent<Base>();
+        if (b)
         {
-            int ndx = Random.Range(0, powerUpFrequencey.Length);
+            powerUpFrequencey.Add(b.unlocksWeapon);
+            WeaponType puType = b.unlocksWeapon;
+            GameObject go = Instantiate(prefabPowerUp) as GameObject;
+            PowerUp pu = go.GetComponent<PowerUp>();
+            pu.SetType(puType);
+            pu.transform.position = e.transform.position;
+        }
+        else if (Random.value <= e.powerUpDropChance)
+        {
+            int ndx = Random.Range(0, powerUpFrequencey.Count);
             WeaponType puType = powerUpFrequencey[ndx];
             
             GameObject go = Instantiate(prefabPowerUp) as GameObject;
@@ -38,6 +49,7 @@ public class Main : MonoBehaviour
             pu.transform.position = e.transform.position;
             enemyCount--;
         }
+        ScoreKeeper.S.UpdateScore(e.score);
     }
 
     public void AsteroidDestroyed(Asteroid a)
@@ -67,7 +79,7 @@ public class Main : MonoBehaviour
         {
             if (Random.value <= a.powerUpDropChance)
             {
-                int ndx = Random.Range(0, powerUpFrequencey.Length);
+                int ndx = Random.Range(0, powerUpFrequencey.Count);
                 WeaponType puType = powerUpFrequencey[ndx];
                 
                 GameObject go = Instantiate(prefabPowerUp) as GameObject;
@@ -76,7 +88,7 @@ public class Main : MonoBehaviour
                 pu.transform.position = a.transform.position;
             }
             SpawnAsteroids();
-            
+            ScoreKeeper.S.UpdateScore(a.score);
         }
     }
 
@@ -84,7 +96,7 @@ public class Main : MonoBehaviour
     {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
-        
+        Spawner = GetComponent<SpawnController>();
 
         WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
         foreach(WeaponDefinition def in weaponDefinitions)
@@ -93,7 +105,10 @@ public class Main : MonoBehaviour
         }
 
         //Spawn Asteroids
-        SpawnAsteroids();
+        for (int point = 0; point < Spawner.spawnPoints.Length; point++)
+        {
+            Instantiate(prefabAsteroid, Spawner.spawnPoints[point].position, Quaternion.identity);
+        }
         //Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
     }
 
@@ -107,7 +122,6 @@ public class Main : MonoBehaviour
 
     public void SpawnAsteroids()
     {
-        SpawnController Spawner = GetComponent<SpawnController>();
         if (Spawner.spawnAllowed && asteroidCount >= maxAsteroids)
         {
             Spawner.spawnAllowed = false;
@@ -165,7 +179,7 @@ public class Main : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("_Scene_0");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     static public WeaponDefinition GetWeaponDefinition(WeaponType wt)

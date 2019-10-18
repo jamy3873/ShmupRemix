@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public int      score = 100;
     public float    showDamageDuration = 0.1f;
     public float    powerUpDropChance = 1f;
+    public Color baseColor;
 
     [Header("Set Dynamically: Enemy")]
     public Color[]      originalColors;
@@ -26,6 +27,10 @@ public class Enemy : MonoBehaviour
     {
         bndCheck = GetComponent<BoundsCheck>();
         //Get mats and colors for this enemy and its children
+        if (GetComponent<Renderer>())
+        {
+            GetComponent<Renderer>().material.color = baseColor;
+        }
         materials = Utils.GetAllMaterials(gameObject);
         originalColors = new Color[materials.Length];
         for (int i = 0; i<materials.Length; i++)

@@ -5,19 +5,15 @@ using UnityEngine;
 public class Base : Enemy
 {
     [Header("Set in Inspector")]
-
-
+    
+    public WeaponType unlocksWeapon;
     private SpawnController spawner;
-    private BoundsCheck bndCheck;
-    private Vector3 spawnOffset = new Vector3(0, 10, 0);
-
-
+    
 
     void Start()
     {
         spawner = GetComponent<SpawnController>();
-        bndCheck = GetComponent<BoundsCheck>();
-        InvokeRepeating("spawnEnemy", 1f, 5f);
+        InvokeRepeating("spawnEnemy", .5f, 4f);
     }
 
     // Update is called once per frame
@@ -29,10 +25,6 @@ public class Base : Enemy
         }
     }
 
-    public override void Move()
-    {
-
-    }
 
     public void spawnEnemy()
     {

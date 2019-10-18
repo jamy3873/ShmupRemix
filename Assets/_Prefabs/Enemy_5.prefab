@@ -85,18 +85,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359b66c5fd37dc7449a9cc84857418c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 17
   fireRate: 0.3
   health: 10
-  score: 100
+  score: 5
   showDamageDuration: 0.1
-  powerUpDropChance: 1
+  powerUpDropChance: 0.6
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
   originalColors: []
   materials: []
   showingDamage: 0
   damageDoneTime: 0
   notifiedOfDestruction: 0
-  explosion: {fileID: 0}
+  rb: {fileID: 0}
+  target: {fileID: 0}
+  directionToTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &6542712246794302825
 GameObject:
   m_ObjectHideFlags: 0

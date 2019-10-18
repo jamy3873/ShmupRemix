@@ -10,10 +10,13 @@ public class Parallax : MonoBehaviour
     public float scrollSpeed = -30f;
     public float motionMult = 0.25f;
 
+    private BoundsCheck CameraBounds;
+
     private float panelHt;
     private float depth;
     void Start()
     {
+        CameraBounds = Camera.main.GetComponent<BoundsCheck>();
         if (Main.S.Hub != null) {
             poi = Main.S.Hub;
         }
@@ -30,14 +33,12 @@ public class Parallax : MonoBehaviour
         depth = 20;
 
         panels[0].transform.position = new Vector3(0, 0, depth);
-        panels[1].transform.position = new Vector3(0, panelHt, depth);
     }
 
     // Update is called once per frame
     void Update()
     {
         float tY = 0, tX = 0;
-        //tY = Time.time * scrollSpeed % panelHt + (panelHt * 0.5f);
 
         if (poi != null)
         {
@@ -48,8 +49,5 @@ public class Parallax : MonoBehaviour
 
         //Position panels[0]
         panels[0].transform.position = new Vector3(tX, tY, depth);
-        //Position panels[1] to make a continuous starfield
-        panels[1].transform.position = new Vector3(-tX, -tY, depth);
-
     }
 }

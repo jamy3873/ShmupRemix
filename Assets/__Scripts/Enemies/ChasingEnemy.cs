@@ -38,14 +38,13 @@ public class ChasingEnemy : Enemy {
         if (target == null)
         {
             CameraFollow cf = Camera.main.GetComponent<CameraFollow>();
-            target = cf.target.gameObject;
+            if (cf.target)
+            {
+                target = cf.target.gameObject;
+            }
+            
         }
     }
-
-	void OnTriggerEnter2D (Collider2D col)
-	{
-		
-	}
 
 	public override void Move()
 	{
