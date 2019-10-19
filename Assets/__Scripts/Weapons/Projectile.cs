@@ -37,15 +37,8 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (!bndCheck.onCamera(transform.position))
-        {
-            Destroy(gameObject);
-        }
-        if(type == WeaponType.phaser)
-        {
-
-            
-        }
+        if (tag == "ProjectileHero" && !bndCheck.onCamera(transform.position)) Destroy(gameObject);
+        if (rigid.velocity.magnitude < 30 ) Destroy(gameObject);
     }
 
     public void SetType(WeaponType eType)

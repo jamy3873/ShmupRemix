@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
         {
             S = this;
         }
+        ResetTarget();
     }
 
     private void LateUpdate()
@@ -22,6 +23,25 @@ public class CameraFollow : MonoBehaviour
         {
             transform.position = target.position + offset;
         }
+        else
+        {
+            ResetTarget();
+        }
     }
 
+    public void ResetTarget()
+    {
+        if (target == null)
+        {
+            if (HubShip.S)
+            {
+                target = HubShip.S.transform;
+            }
+            else if (HeroShip.S)
+            {
+                target = HeroShip.S.transform;
+            }
+                
+        }
+    }
 }

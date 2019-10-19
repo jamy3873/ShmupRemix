@@ -6,13 +6,18 @@ public class HubShip : Hero
 {
     public static HubShip S;
     [Header("Set in Inspector: HubShip")]
-    public GameObject HeroShip;
+    public GameObject Hero;
+    public float rotationSpeed;
 
     void Start()
     {
         S = this;
+        Hero = Main.S.Hero;
+        
         rb = GetComponent<Rigidbody>();
-        //ClearWeapons();
+        ClearWeapons();
+        weapons[0].type = WeaponType.blaster;
+
     }
 
     // Update is called once per frame
@@ -40,15 +45,14 @@ public class HubShip : Hero
 
     public override void Move()
     {
-        if (HeroShip != null)
+        if (Hero != null)
         {
-            transform.Rotate(Vector3.forward, (30 * Time.time % 360));
+            transform.Rotate(Vector3.forward, (rotationSpeed * Time.time % 360));
         }
         else
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
-            mousePos -= mouseOffset / 2;
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = new Vector3(mouse.x, mouse.y, 0) - transform.position;
             if (mousePos.x > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(mousePos.normalized, Vector3.up));

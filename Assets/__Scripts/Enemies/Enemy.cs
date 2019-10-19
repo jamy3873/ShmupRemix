@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float    showDamageDuration = 0.1f;
     public float    powerUpDropChance = 1f;
     public Color baseColor;
+    public Weapon[] weapons;
 
     [Header("Set Dynamically: Enemy")]
     public Color[]      originalColors;
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
     public bool         showingDamage = false;
     public float        damageDoneTime;
     public bool         notifiedOfDestruction = false;
+
 
     protected BoundsCheck bndCheck;
     private void Awake()
@@ -61,6 +63,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Move();
         if(showingDamage && Time.time > damageDoneTime)
         {
             UnShowDamage();

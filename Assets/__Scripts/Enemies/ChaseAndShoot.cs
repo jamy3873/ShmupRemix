@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ChaseAndShoot : ChasingEnemy
 {
-    public delegate void WeaponFireDelegate();
-    public WeaponFireDelegate fireDelegate;
-    public Weapon[] weapons;
 
     private void Start()
     {
@@ -62,9 +59,13 @@ public class ChaseAndShoot : ChasingEnemy
 
     public void shoot()
     {
-        for(int w = 0; w < weapons.Length; w++)
+        if (bndCheck.onCamera(transform.position))
         {
-            weapons[w].Fire();
+            for (int w = 0; w < weapons.Length; w++)
+            {
+                weapons[w].Fire();
+            }
         }
+        
     }
 }

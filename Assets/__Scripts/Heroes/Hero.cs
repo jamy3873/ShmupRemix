@@ -14,10 +14,6 @@ public class Hero : MonoBehaviour
     public bool invincible = false;
     public Weapon[] weapons;
 
-    [Header("Prefabs for Respawns")]
-    public GameObject heroPrefab;
-    public GameObject hubPrefab;
-
     [Header("Set Dynamically")]
     [SerializeField]
     protected Material[] materials;
@@ -68,7 +64,7 @@ public class Hero : MonoBehaviour
             shieldLevel--;
             if (other.tag == "ProjectileEnemy")
             {
-                Destroy(go);
+                Destroy(other.gameObject);
             }
             Invulnerable();
         }
@@ -159,7 +155,7 @@ public class Hero : MonoBehaviour
     {
         foreach (Material m in materials)
         {
-            m.color = Color.cyan;
+            m.color = Color.red;
         }
         invincibilityTimer = Time.time + invincibleDuration;
         invincible = true;
@@ -176,19 +172,20 @@ public class Hero : MonoBehaviour
 
     private GameObject ReviveShip()
     {
+        GameObject newShip = null;
         if (Main.S.Hero == null)
         {
-            GameObject newShip =  Instantiate<GameObject>(heroPrefab);
+            newShip =  Instantiate<GameObject>(Main.S.heroPrefab);
             newShip.GetComponent<HeroShip>().Hub = HubShip.S.gameObject;
-            HubShip.S.HeroShip = newShip;
+            newShip.transform.SetParent(Main.S.PLAYERS);
+            HubShip.S.Hero = newShip;
             Main.S.Hero = newShip;
-            return newShip;
         }
         if (Main.S.Hub == null)
         {
-            GameObject newShip = Instantiate<GameObject>(hubPrefab);
-            newShip.GetComponent<HubShip>().HeroShip = HeroShip.S.gameObject;
-
+            newShip = Instantiate<GameObject>(Main.S.hubPrefab);
+            newShip.GetComponent<HubShip>().Hero = HeroShip.S.gameObject;
+            newShip.transform.SetParent(Main.S.PLAYERS);
             //Set position and camera
             Vector3 pos = transform.position;
             newShip.transform.position = new Vector3(pos.x, pos.y, pos.z);
@@ -196,9 +193,8 @@ public class Hero : MonoBehaviour
             CameraFollow.S.target = newShip.transform;
             HeroShip.S.Hub = newShip;
             Main.S.Hub = newShip;
-            return newShip;
         }
         Main.S.powerUpFrequencey.Remove(WeaponType.newLife);
-        return null;
+        return newShip;
     }
 }

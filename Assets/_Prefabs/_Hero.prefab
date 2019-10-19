@@ -504,11 +504,6 @@ PrefabInstance:
       propertyPath: _type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
-        type: 3}
-      propertyPath: def.type
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}
 --- !u!4 &9122267618998048425 stripped
@@ -600,11 +595,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _type
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
-        type: 3}
-      propertyPath: def.type
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}
@@ -698,11 +688,6 @@ PrefabInstance:
       propertyPath: _type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
-        type: 3}
-      propertyPath: def.type
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}
 --- !u!4 &6560835119175026272 stripped
@@ -795,11 +780,6 @@ PrefabInstance:
       propertyPath: _type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
-        type: 3}
-      propertyPath: def.type
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}
 --- !u!4 &6560835118871506017 stripped
@@ -891,11 +871,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _type
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
-        type: 3}
-      propertyPath: def.type
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}

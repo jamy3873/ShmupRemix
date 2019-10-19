@@ -53,6 +53,7 @@ MonoBehaviour:
   showDamageDuration: 0.1
   powerUpDropChance: 0.7
   baseColor: {r: 0, g: 0, b: 0, a: 0}
+  weapons: []
   originalColors: []
   materials: []
   showingDamage: 0
@@ -156,7 +157,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5db8cae2ebd758c40acf5aae152a78cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -9,8 +9,10 @@ public class Main : MonoBehaviour
     static public Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in Inspector")]
-    public GameObject Hub;
-    public GameObject Hero;
+
+    public Transform PLAYERS;
+    public GameObject hubPrefab;
+    public GameObject heroPrefab;
     public GameObject[] prefabEnemies;
     public GameObject prefabAsteroid;
     public float        enemySpawnPerSecond = 0.5f;
@@ -25,6 +27,10 @@ public class Main : MonoBehaviour
     private SpawnController Spawner;
     public int enemyCount = 0;
     public int asteroidCount = 20;
+
+    [Header("Set Dynamically")]
+    public GameObject Hub;
+    public GameObject Hero;
 
     public void ShipDestroyed(Enemy e)
     {
@@ -88,13 +94,44 @@ public class Main : MonoBehaviour
                 pu.transform.position = a.transform.position;
             }
             SpawnAsteroids();
-            ScoreKeeper.S.UpdateScore(a.score);
         }
+        ScoreKeeper.S.UpdateScore(a.score);
     }
 
     void Awake()
     {
         S = this;
+        if (Hub == null)
+        {
+            if (HubShip.S)
+            {
+                Hub = HubShip.S.gameObject;
+            }
+            else if (transform.root.gameObject.scene.buildIndex == 1)
+            {
+                Transform spawn = transform;
+                Vector3 pos = spawn.position;
+                spawn.position = new Vector3(pos.x, pos.y, 0);
+                Hub = Instantiate<GameObject>(hubPrefab, spawn.position, Quaternion.identity);
+                Hub.transform.SetParent(PLAYERS, true);
+            }
+        }
+        if (Hero == null)
+        {
+            if (HeroShip.S)
+            {
+                Hero = HeroShip.S.gameObject;
+            }
+            else if (transform.root.gameObject.scene.buildIndex == 1)
+            {
+                Transform spawn = transform;
+                Vector3 pos = spawn.position;
+                spawn.position = new Vector3(pos.x, pos.y, 0);
+                Hero = Instantiate<GameObject>(heroPrefab, spawn.position, Quaternion.identity);
+                Hero.transform.SetParent(PLAYERS, true);
+            }
+        }
+
         bndCheck = GetComponent<BoundsCheck>();
         Spawner = GetComponent<SpawnController>();
 

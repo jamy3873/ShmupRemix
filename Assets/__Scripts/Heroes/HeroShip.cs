@@ -12,6 +12,8 @@ public class HeroShip : Hero
     void Start()
     {
         S = this;
+        Hub = Main.S.Hub;
+        
         ClearWeapons();
         weapons[0].SetType(WeaponType.blaster);
 
@@ -47,7 +49,8 @@ public class HeroShip : Hero
             /*Vector3 mousePos = Input.mousePosition;
             Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
             mousePos -= mouseOffset / 2;*/
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Hub.transform.position;
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = new Vector3(mouse.x, mouse.y, 0) - Hub.transform.position;
 
             transform.position = Hub.transform.position + (mousePos.normalized * distFromHub);
             if (mousePos.x > 0)
@@ -71,10 +74,8 @@ public class HeroShip : Hero
             pos.y += yAxis * speed * Time.deltaTime;
             transform.position = pos;
 
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 mouseOffset = new Vector3(Screen.width, Screen.height, 0);
-            mousePos -= mouseOffset / 2;
-            Quaternion rot = transform.rotation;
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = new Vector3(mouse.x, mouse.y, 0) - transform.position;
             if (mousePos.x > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 0, -Vector3.Angle(mousePos.normalized, Vector3.up));
