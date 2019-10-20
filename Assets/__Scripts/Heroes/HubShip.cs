@@ -9,15 +9,22 @@ public class HubShip : Hero
     public GameObject Hero;
     public float rotationSpeed;
 
+    public void ResetWeapons()
+    {
+        ClearWeapons();
+        weapons[0].type = WeaponType.blaster;
+    }
+
     void Start()
     {
         S = this;
         Hero = Main.S.Hero;
-        
-        rb = GetComponent<Rigidbody>();
-        ClearWeapons();
-        weapons[0].type = WeaponType.blaster;
+        if (transform.root.gameObject.scene.name == "_Scene_0")
+        {
+            ResetWeapons();
+        }
 
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

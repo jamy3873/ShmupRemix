@@ -9,13 +9,20 @@ public class HeroShip : Hero
 
     public int distFromHub = 30;
 
+    public void ResetWeapons()
+    {
+        ClearWeapons();
+        weapons[0].type = WeaponType.blaster;
+    }
+
     void Start()
     {
         S = this;
         Hub = Main.S.Hub;
-        
-        ClearWeapons();
-        weapons[0].SetType(WeaponType.blaster);
+        if (transform.root.gameObject.scene.name == "_Scene_0")
+        {
+            ResetWeapons();
+        }
 
         rb = GetComponent<Rigidbody>();
         if (Hub)

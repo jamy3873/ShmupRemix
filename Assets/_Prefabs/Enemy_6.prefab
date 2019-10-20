@@ -257,8 +257,10 @@ MonoBehaviour:
   health: 10
   score: 20
   showDamageDuration: 0.1
-  powerUpDropChance: 0.5
+  powerUpDropChance: 1
   baseColor: {r: 0, g: 0, b: 0, a: 0}
+  weapons:
+  - {fileID: 3732013438304726499}
   originalColors: []
   materials: []
   showingDamage: 0
@@ -267,8 +269,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   target: {fileID: 0}
   directionToTarget: {x: 0, y: 0, z: 0}
-  weapons:
-  - {fileID: 3732013438304726499}
 --- !u!114 &-4983231149282209112
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -101,11 +101,25 @@ public class Main : MonoBehaviour
     void Awake()
     {
         S = this;
+        bndCheck = GetComponent<BoundsCheck>();
+        Spawner = GetComponent<SpawnController>();
+
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
+        foreach (WeaponDefinition def in weaponDefinitions)
+        {
+            WEAP_DICT[def.type] = def;
+        }
+
+    }
+
+    private void Start()
+    {
         if (Hub == null)
         {
             if (HubShip.S)
             {
                 Hub = HubShip.S.gameObject;
+                
             }
             else if (transform.root.gameObject.scene.buildIndex == 1)
             {
@@ -114,6 +128,13 @@ public class Main : MonoBehaviour
                 spawn.position = new Vector3(pos.x, pos.y, 0);
                 Hub = Instantiate<GameObject>(hubPrefab, spawn.position, Quaternion.identity);
                 Hub.transform.SetParent(PLAYERS, true);
+                HubShip hubScript = Hub.GetComponent<HubShip>();
+                hubScript.ResetWeapons();
+                for (int i = 0; i < hubScript.weapons.Length; i++)
+                {
+                    hubScript.weapons[i].type = WeaponType.blaster;
+                }
+
             }
         }
         if (Hero == null)
@@ -129,16 +150,15 @@ public class Main : MonoBehaviour
                 spawn.position = new Vector3(pos.x, pos.y, 0);
                 Hero = Instantiate<GameObject>(heroPrefab, spawn.position, Quaternion.identity);
                 Hero.transform.SetParent(PLAYERS, true);
+                HeroShip heroScript = Hero.GetComponent<HeroShip>();
+                heroScript.ResetWeapons();
+                heroScript.weapons[0].type = WeaponType.spread;
+
+                /*for (int i = 0; i < heroScript.weapons.Length; i++)
+                {
+                    heroScript.weapons[i].type = WeaponType.blaster;
+                }*/
             }
-        }
-
-        bndCheck = GetComponent<BoundsCheck>();
-        Spawner = GetComponent<SpawnController>();
-
-        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
-        foreach(WeaponDefinition def in weaponDefinitions)
-        {
-            WEAP_DICT[def.type] = def;
         }
 
         //Spawn Asteroids
@@ -159,15 +179,11 @@ public class Main : MonoBehaviour
 
     public void SpawnAsteroids()
     {
-        if (Spawner.spawnAllowed && asteroidCount >= maxAsteroids)
+        if (asteroidCount < maxAsteroids)
         {
-            Spawner.spawnAllowed = false;
+            Spawner.SpawnSomething();
         }
-        else if (asteroidCount < maxAsteroids)
-        {
-            Spawner.spawnAllowed = true;
-        }
-        Spawner.SpawnSomething();
+        
        
         
     }

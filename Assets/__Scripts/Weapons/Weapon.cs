@@ -42,11 +42,16 @@ public class Weapon : MonoBehaviour
 
     private GameObject ship;
 
-    void Start()
+    private void Awake()
     {
         ship = transform.root.gameObject;
         collar = transform.Find("Collar").gameObject;
         collarRend = collar.GetComponent<Renderer>();
+    }
+
+    void Start()
+    {
+        
         
         //Call SetType() for default _type of WeaponType.none
         SetType(_type);

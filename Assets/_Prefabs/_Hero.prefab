@@ -288,9 +288,6 @@ MonoBehaviour:
   - {fileID: 8736573242760559148}
   - {fileID: 8736573242204505991}
   - {fileID: 8736573242586124333}
-  heroPrefab: {fileID: 8060046631957419984}
-  hubPrefab: {fileID: 5272024420669695463, guid: 2f56998bb4d7f934e866dfa712de5a3b,
-    type: 3}
   materials: []
   Hub: {fileID: 0}
   distFromHub: 10
@@ -778,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
         type: 3}
       propertyPath: _type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}
@@ -870,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 1649868489042784480, guid: 5302f6e1b4769294688a82f3a22a59ba,
         type: 3}
       propertyPath: _type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5302f6e1b4769294688a82f3a22a59ba, type: 3}

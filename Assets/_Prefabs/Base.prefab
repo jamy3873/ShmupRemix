@@ -134,11 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1662ae2c574584fa3c1768296f5331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 5
+  spawnDelay: 2
   spawnPoints:
   - {fileID: 5580312597536998659}
-  enemies: []
-  spawnFrequency: 3
+  enemies:
+  - {fileID: 6542712246419889629, guid: 67fbeff0e57c4c340816043816b04db9, type: 3}
+  - {fileID: 6576508939032993134, guid: ce0e5594d56a9814dafccd1c2cacd245, type: 3}
+  spawnFrequency: 5
   spawnAllowed: 0
   spawnRepeating: 0
 --- !u!114 &-687765187244209673

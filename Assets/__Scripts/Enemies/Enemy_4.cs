@@ -20,13 +20,13 @@ public class Enemy_4 : Enemy
 {
     private Vector3 p0, p1;
     private float timeStart;
-    private float moveDuration = 4;
+    private float moveDuration = 3f;
     public Part[] parts;
     public GameObject cockpit;
 
     void Start()
     {
-        cockpit = transform.Find("Cockpit").gameObject;
+        //cockpit = transform.Find("Cockpit").gameObject;
 
         p0 = p1 = pos;
         InitMovement();
@@ -41,28 +41,32 @@ public class Enemy_4 : Enemy
                 prt.mat = prt.go.GetComponent<Renderer>().material;
             }
         }
-        InvokeRepeating("Shoot1", 3f, .4f);
-        InvokeRepeating("Shoot2", 6f, .6f);
-        InvokeRepeating("Shoot3", 8f, .8f);
-        InvokeRepeating("Shoot4", 10f, 1f);
+        InvokeRepeating("Shoot1", 3f, 1f);
+        InvokeRepeating("Shoot2", 6f, .8f);
+        InvokeRepeating("Shoot3", 8f, .9f);
+        InvokeRepeating("Shoot4", 10f, 4f);
     }
 
     private void FixedUpdate()
     {
         transform.Rotate(Vector3.forward, (-10 * Time.deltaTime % 360));
-        weapons[0].transform.Rotate(Vector3.forward, (5 * Time.deltaTime % 360));
-        weapons[1].transform.Rotate(Vector3.forward, (-5 * Time.deltaTime % 360));
-        weapons[6].transform.Rotate(Vector3.forward, (5 * Time.deltaTime % 360));
-        weapons[7].transform.Rotate(Vector3.forward, (-5 * Time.deltaTime % 360));
+        weapons[6].transform.Rotate(Vector3.forward, (25 * Time.deltaTime % 360));
+        weapons[7].transform.Rotate(Vector3.forward, (-25 * Time.deltaTime % 360));
     }
 
     void InitMovement()
     {
-        p0 = p1;
+        /*p0 = p1;
         float widMinRad = 150;
-        float hgtMinRad = 110;
+        float hgtMinRad = 100;
         p1.x = Random.Range(-widMinRad, widMinRad);
-        p1.y = Random.Range(-hgtMinRad, hgtMinRad)+120;
+        p1.y = Random.Range(-hgtMinRad, hgtMinRad)+120;*/
+        p0 = p1;
+        if (CameraFollow.S && CameraFollow.S.target)
+        {
+            p1 = CameraFollow.S.target.position;
+        }
+        
 
         timeStart = Time.time;
     }
@@ -181,8 +185,7 @@ public class Enemy_4 : Enemy
     {
         weapons[0].Fire();
         weapons[1].Fire();
-        weapons[6].Fire();
-        weapons[7].Fire();
+        
     }
 
     public void Shoot2()
@@ -194,6 +197,8 @@ public class Enemy_4 : Enemy
     {
         weapons[4].Fire();
         weapons[5].Fire();
+        weapons[6].Fire();
+        weapons[7].Fire();
     }
 
     public void Shoot4()

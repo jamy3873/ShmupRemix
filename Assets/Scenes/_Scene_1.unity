@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1662ae2c574584fa3c1768296f5331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 3
+  spawnDelay: 2
   spawnPoints:
   - {fileID: 1387870169}
   - {fileID: 1566507255}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   - {fileID: 1032709842}
   enemies:
   - {fileID: 2323243859189139874, guid: 171f460fb22f7f541ad2d36e75627755, type: 3}
-  spawnFrequency: 1
+  spawnFrequency: 0.8
   spawnAllowed: 1
   spawnRepeating: 1
 --- !u!114 &956912154
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     projectilePrefab: {fileID: 5091291197060971906, guid: ece8e2f686392ea4793c2f2b4734b34b,
       type: 3}
     projectileColor: {r: 0.8666667, g: 0.19215687, b: 0.73333335, a: 1}
-    damageOnHit: 5
+    damageOnHit: 3
     continuousDamage: 0
     shotDelay: 1
     velocity: 40
@@ -1308,7 +1308,7 @@ MonoBehaviour:
     projectilePrefab: {fileID: 5091291197060971906, guid: 5a4da28a35cb40646a05a376411809d6,
       type: 3}
     projectileColor: {r: 1, g: 0.50980395, b: 0, a: 1}
-    damageOnHit: 1
+    damageOnHit: 2
     continuousDamage: 5
     shotDelay: 0.6
     velocity: 40
@@ -1362,7 +1362,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ce2f8ac1b57edca42bc61ca99506de76, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1752,7 +1752,7 @@ PrefabInstance:
     - target: {fileID: 6576508939032993129, guid: 1d89422bf334cc94490c4519b6aa14ae,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 180
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6576508939032993129, guid: 1d89422bf334cc94490c4519b6aa14ae,
         type: 3}
@@ -1802,18 +1802,23 @@ PrefabInstance:
     - target: {fileID: 8798321304593572706, guid: 1d89422bf334cc94490c4519b6aa14ae,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8798321304593572706, guid: 1d89422bf334cc94490c4519b6aa14ae,
         type: 3}
       propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798321304593572706, guid: 1d89422bf334cc94490c4519b6aa14ae,
+        type: 3}
+      propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3341582729421440966, guid: 1d89422bf334cc94490c4519b6aa14ae,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7f6c4a914675b72459dbffb43b036e53,
+      objectReference: {fileID: 21300000, guid: 35d2adb0dde85f5449693a8267d35f36,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d89422bf334cc94490c4519b6aa14ae, type: 3}
@@ -2080,22 +2085,22 @@ PrefabInstance:
       propertyPath: _type
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8736573242204505991, guid: 260a8c000255f0444b78f03c32b77f6d,
-        type: 3}
-      propertyPath: _type
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8736573242760559148, guid: 260a8c000255f0444b78f03c32b77f6d,
         type: 3}
       propertyPath: _type
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8736573242586124333, guid: 260a8c000255f0444b78f03c32b77f6d,
+    - target: {fileID: 6677292083135671013, guid: 260a8c000255f0444b78f03c32b77f6d,
         type: 3}
       propertyPath: _type
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6677292083135671013, guid: 260a8c000255f0444b78f03c32b77f6d,
+    - target: {fileID: 8736573242204505991, guid: 260a8c000255f0444b78f03c32b77f6d,
+        type: 3}
+      propertyPath: _type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736573242586124333, guid: 260a8c000255f0444b78f03c32b77f6d,
         type: 3}
       propertyPath: _type
       value: 2
@@ -2466,7 +2471,7 @@ Transform:
   m_GameObject: {fileID: 1787806277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 600, y: 600, z: 1}
+  m_LocalScale: {x: 500, y: 500, z: 1}
   m_Children: []
   m_Father: {fileID: 1207296767}
   m_RootOrder: 1

@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 6576508939032993134}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 10, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 6576508939204893600}
   - {fileID: 6576508938017305742}
@@ -400,7 +400,7 @@ MonoBehaviour:
   notifiedOfDestruction: 0
   parts:
   - name: Cockpit
-    health: 20
+    health: 25
     protectedBy:
     - Fuselage
     - WingL
@@ -410,17 +410,17 @@ MonoBehaviour:
     go: {fileID: 0}
     mat: {fileID: 0}
   - name: Fuselage
-    health: 25
+    health: 20
     protectedBy: []
     go: {fileID: 0}
     mat: {fileID: 0}
   - name: WingL
-    health: 20
+    health: 15
     protectedBy: []
     go: {fileID: 0}
     mat: {fileID: 0}
   - name: WingR
-    health: 20
+    health: 15
     protectedBy: []
     go: {fileID: 0}
     mat: {fileID: 0}
@@ -434,6 +434,7 @@ MonoBehaviour:
     protectedBy: []
     go: {fileID: 0}
     mat: {fileID: 0}
+  cockpit: {fileID: 0}
 --- !u!1 &6576508939204893601
 GameObject:
   m_ObjectHideFlags: 0
