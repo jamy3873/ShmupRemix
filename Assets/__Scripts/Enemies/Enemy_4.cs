@@ -42,8 +42,8 @@ public class Enemy_4 : Enemy
             }
         }
         InvokeRepeating("Shoot1", 3f, 1f);
-        InvokeRepeating("Shoot2", 6f, .8f);
-        InvokeRepeating("Shoot3", 8f, .9f);
+        InvokeRepeating("Shoot2", 6f, 1.2f);
+        InvokeRepeating("Shoot3", 8f, .8f);
         InvokeRepeating("Shoot4", 10f, 4f);
     }
 
@@ -159,6 +159,7 @@ public class Enemy_4 : Enemy
                 if (prtHit.health <= 0)
                 {
                     prtHit.go.SetActive(false);
+                    ScoreKeeper.S.UpdateScore(25);
                 }
                 //Check if whole ship is destroyed
                 bool allDestroyed = true;

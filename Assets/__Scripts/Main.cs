@@ -11,10 +11,12 @@ public class Main : MonoBehaviour
     [Header("Set in Inspector")]
 
     public Transform PLAYERS;
+    public Transform ENEMIES;
     public GameObject hubPrefab;
     public GameObject heroPrefab;
     public GameObject[] prefabEnemies;
     public GameObject prefabAsteroid;
+    public GameObject bossPrefab;
     public float        enemySpawnPerSecond = 0.5f;
     public float        enemyDefaultPadding = 0.1f;
     public int          maxEnemies = 15;
@@ -43,6 +45,11 @@ public class Main : MonoBehaviour
             PowerUp pu = go.GetComponent<PowerUp>();
             pu.SetType(puType);
             pu.transform.position = e.transform.position;
+        }
+        else if (e.gameObject.name == "Enemy_4")
+        {
+            GameObject boss = Instantiate<GameObject>(bossPrefab,PLAYERS,true);
+            boss.transform.position = new Vector3(0, 200, 0);
         }
         else if (Random.value <= e.powerUpDropChance)
         {
