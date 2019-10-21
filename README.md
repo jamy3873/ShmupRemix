@@ -1,8 +1,8 @@
 # SUPER SPACE XPLORERS
 ## Design Goals
-1.) A cooperative space shooter inspired by Asteroids and Super Metroid.
-2.) First real attempt at using Unity to build games.
-3.) Wanted to create a fast paced level with a boss at the end.
+- 1.) A cooperative space shooter inspired by Asteroids and Super Metroid.
+- 2.) First real attempt at using Unity to build games.
+- 3.) Wanted to create a fast paced level with a boss at the end.
 
 ## Description
 Being my first major attempt at Unity development, I wanted to branch out from the book's original space shooter prototype to better my understanding of this engine. What was originally a vertical scroller quickly evolved into a top-down dungeon crawler with Super Metroid styled rules. In Super Space Xplorers, you and a partner must navigate this asteroid ridden sector of space to collect weapons strong enough to open up doorways. Currently there are only four weapons (blaster, spread, phaser, and missiles), but each have their own advantages and disadvantages. Players unlock these weapons by destroying enemy bases of a particular color, after which it becomes possible for that weapon's power ups to spawn.
