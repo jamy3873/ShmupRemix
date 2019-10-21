@@ -1547,7 +1547,7 @@ Transform:
   m_GameObject: {fileID: 444312569}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 120, z: 0}
-  m_LocalScale: {x: 24, y: 20, z: 5}
+  m_LocalScale: {x: 20, y: 20, z: 5}
   m_Children: []
   m_Father: {fileID: 1396022054}
   m_RootOrder: 16
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelIndex: 1
   levelName: _Scene_1
-  rainbowTimeChange: 0.08
+  rainbowTimeChange: 0.05
   rainbowTimeSince: 0
   cubeRend: {fileID: 0}
 --- !u!1 &482647753

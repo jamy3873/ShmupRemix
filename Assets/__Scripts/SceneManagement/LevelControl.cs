@@ -29,7 +29,7 @@ public class LevelControl : MonoBehaviour
                     Random.value);
                 rainbowTimeSince = 0f;
             }
-
+            gameObject.transform.Rotate(Vector3.forward, (1800 * Time.deltaTime % 360));
         }
     }
 
