@@ -17,7 +17,7 @@ public class ChaseAndShoot : ChasingEnemy
         }
         rb = GetComponent<Rigidbody>();
 
-        InvokeRepeating("shoot", 0f, 1f);
+        InvokeRepeating("shoot", 0f, fireRate);
     }
     
     void Update()

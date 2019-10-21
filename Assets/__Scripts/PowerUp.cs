@@ -21,6 +21,9 @@ public class PowerUp : MonoBehaviour
     private BoundsCheck bndCheck;
     private Renderer cubeRend;
 
+    public float rainbowTimeChange = 0.1f;
+    private float rainbowTimeSince = 0.0f;
+
     void Awake()
     {
         cube = transform.Find("Cube").gameObject;
@@ -51,6 +54,7 @@ public class PowerUp : MonoBehaviour
 
     void Update()
     {
+        if (!bndCheck.isOnScreen) { Destroy(gameObject); }
         cube.transform.rotation = Quaternion.Euler(rotPerSecond * Time.time);
 
         float u = (Time.time - (birthTime + lifeTime)) / fadeTime; //For lifeTime seconds, u <= 0. Then transitions to 1 over fadeTime seconds
@@ -64,9 +68,23 @@ public class PowerUp : MonoBehaviour
             c = letter.color;
             c.a = 1f - (u * 0.5f);
             letter.color = c;
+
+            
         }
 
-        if (!bndCheck.isOnScreen) { Destroy(gameObject); }
+        if (type == WeaponType.newLife) //Rainbow Effect
+        {
+            rainbowTimeSince += Time.deltaTime;
+            if (rainbowTimeSince >= rainbowTimeChange)
+            {
+                cubeRend.material.color = new Color(
+                    Random.value,
+                    Random.value,
+                    Random.value);
+                rainbowTimeSince = 0f;
+            }
+            
+        }
     }
 
     public void SetType(WeaponType wt)

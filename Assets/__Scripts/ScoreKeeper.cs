@@ -28,4 +28,9 @@ public class ScoreKeeper : MonoBehaviour
         score += value_;
         scoreText.text = score.ToString();
     }
+
+    public void UpdateScore(string str)
+    {
+        scoreText.text = str;
+    }
 }

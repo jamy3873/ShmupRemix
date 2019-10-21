@@ -33,6 +33,7 @@ public class Main : MonoBehaviour
     [Header("Set Dynamically")]
     public GameObject Hub;
     public GameObject Hero;
+    private bool wonGame = false;
 
     public void ShipDestroyed(Enemy e)
     {
@@ -48,8 +49,11 @@ public class Main : MonoBehaviour
         }
         else if (e.gameObject.name == "Enemy_4")
         {
-            GameObject boss = Instantiate<GameObject>(bossPrefab,PLAYERS,true);
-            boss.transform.position = new Vector3(0, 200, 0);
+            ScoreKeeper.S.UpdateScore("YOU WIN!");
+            wonGame = true;
+            DelayedRestart(5);
+            /*GameObject boss = Instantiate<GameObject>(bossPrefab,PLAYERS,true);
+            boss.transform.position = new Vector3(0, 200, 0);*/
         }
         else if (Random.value <= e.powerUpDropChance)
         {
@@ -239,7 +243,15 @@ public class Main : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (wonGame)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
     }
 
     static public WeaponDefinition GetWeaponDefinition(WeaponType wt)
