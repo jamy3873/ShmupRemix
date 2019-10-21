@@ -421,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133968723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 77, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1761182552}
@@ -3026,6 +3026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PLAYERS: {fileID: 133968724}
+  ENEMIES: {fileID: 0}
   hubPrefab: {fileID: 5272024420669695463, guid: 2f56998bb4d7f934e866dfa712de5a3b,
     type: 3}
   heroPrefab: {fileID: 8060046631957419984, guid: 260a8c000255f0444b78f03c32b77f6d,
@@ -3034,6 +3035,7 @@ MonoBehaviour:
   - {fileID: 6542712246419889629, guid: 67fbeff0e57c4c340816043816b04db9, type: 3}
   prefabAsteroid: {fileID: 2323243859189139874, guid: 171f460fb22f7f541ad2d36e75627755,
     type: 3}
+  bossPrefab: {fileID: 0}
   enemySpawnPerSecond: 0.5
   enemyDefaultPadding: 0.1
   maxEnemies: 10
@@ -6337,6 +6339,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6903029635103802722, guid: 2f56998bb4d7f934e866dfa712de5a3b,
+        type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903029635205839780, guid: 2f56998bb4d7f934e866dfa712de5a3b,
+        type: 3}
+      propertyPath: _type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5272024420669695466, guid: 2f56998bb4d7f934e866dfa712de5a3b,
         type: 3}
       propertyPath: HeroShip
@@ -6354,16 +6366,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5272024420669695463, guid: 2f56998bb4d7f934e866dfa712de5a3b,
         type: 3}
-    - target: {fileID: 6903029635103802722, guid: 2f56998bb4d7f934e866dfa712de5a3b,
-        type: 3}
-      propertyPath: _type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6903029635205839780, guid: 2f56998bb4d7f934e866dfa712de5a3b,
-        type: 3}
-      propertyPath: _type
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f56998bb4d7f934e866dfa712de5a3b, type: 3}
 --- !u!1001 &8060046631680828981
@@ -6433,6 +6435,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8736573241151032729, guid: 260a8c000255f0444b78f03c32b77f6d,
+        type: 3}
+      propertyPath: _type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736573242760559148, guid: 260a8c000255f0444b78f03c32b77f6d,
+        type: 3}
+      propertyPath: _type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8060046631957419999, guid: 260a8c000255f0444b78f03c32b77f6d,
         type: 3}
       propertyPath: Hub
@@ -6459,16 +6471,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8736573241151032729, guid: 260a8c000255f0444b78f03c32b77f6d,
-        type: 3}
-      propertyPath: _type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8736573242760559148, guid: 260a8c000255f0444b78f03c32b77f6d,
-        type: 3}
-      propertyPath: _type
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 260a8c000255f0444b78f03c32b77f6d, type: 3}
