@@ -1582,7 +1582,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 586787a590cffea45aa719b23422ed7b, type: 2}
+  - {fileID: 2100000, guid: c3f12b6e8b04a8d47aa2fdada802c0b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1625,6 +1625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelIndex: 1
   levelName: _Scene_1
+  rainbowTimeChange: 0.08
+  rainbowTimeSince: 0
+  cubeRend: {fileID: 0}
 --- !u!1 &482647753
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,31 @@ public class LevelControl : MonoBehaviour
 {
     public int levelIndex;
     public string levelName;
+    public float rainbowTimeChange = 1.0f;
+    public float rainbowTimeSince = 0f;
+    public Renderer cubeRend;
+
+    private void Start()
+    {
+        cubeRend = GetComponent<Renderer>();
+    }
+
+    private void Update()
+    {
+        if (gameObject.name == "Exit") //Rainbow Effect
+        {
+            rainbowTimeSince += Time.deltaTime;
+            if (rainbowTimeSince >= rainbowTimeChange)
+            {
+                cubeRend.material.color = new Color(
+                    Random.value,
+                    Random.value,
+                    Random.value);
+                rainbowTimeSince = 0f;
+            }
+
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
